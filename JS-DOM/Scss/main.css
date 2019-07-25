@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4e4a4a), to(grey));
+  background-image: linear-gradient(to bottom, #4e4a4a, grey);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body .section-form .student-form label {
+  font-weight: 500;
+  color: white;
+  margin: 10px 0 0;
+  font-size: 18px;
+}
+
+body .section-form .student-form input {
+  margin: 5px 0;
+}
+
+body .section-form .student-form button {
+  font-weight: 700;
+}
+
+body .section-form #scores {
+  border: 2px solid #17a2b8;
+  padding-top: 20px;
+}
+
+body .section-form #scores #tableScore {
+  height: 250px;
+  overflow-y: auto;
+}
+
+body .section-form #scores #tableScore th, body .section-form #scores #tableScore td {
+  color: white;
+}
+
+body .section-form #scores h2 {
+  margin-top: 50px;
+  text-align: center;
+  color: white;
+}
+
+body .section-form #scores input {
+  padding-left: 10px;
+  width: 48%;
+  border-radius: 5px;
+  height: 35px;
+}
+
+body .section-form #table h1 {
+  margin-top: 50px;
+  color: white;
+  font-size: 40px;
+}
+
+body .section-form #table table {
+  color: white;
+}
+
+body .section-form #table table thead th {
+  cursor: pointer;
+  -webkit-transition: 0.1s all;
+  transition: 0.1s all;
+}
+
+body .section-form #table table thead th:hover {
+  color: #17a2b8;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+body .section-form #table table thead th:active {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+body .section-form #errors {
+  position: relative;
+}
+
+body .section-form #errors p {
+  font-size: 18px;
+  margin: 0;
+}
+
+body .section-form #errors #alert {
+  display: none;
+}
+
+body .section-form #errors #alert-number {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+/*# sourceMappingURL=main.css.map */
