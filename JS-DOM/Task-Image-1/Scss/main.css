@@ -54,7 +54,6 @@ body .section-form #scores input {
 }
 
 body .section-form #table h1 {
-  margin-top: 50px;
   color: white;
   font-size: 40px;
 }
@@ -90,11 +89,19 @@ body .section-form #errors p {
 }
 
 body .section-form #errors #alert {
-  display: none;
+  visibility: hidden;
 }
 
 body .section-form #errors #alert-number {
-  display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body .section-form #errors #alert-email {
+  visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;

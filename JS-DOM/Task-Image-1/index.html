@@ -15,7 +15,6 @@
     <main>
         <section class="section-form">
             <div class="container">
-
                 <div class="row">
                     <div class="col-md-6 student-form mt-5">
                         <label for="input-name">Name</label>
@@ -31,26 +30,33 @@
                             id="input-birthday">
                         <button class="btn btn-info mt-3" onclick="getInputValues()">Save</button>
                         <button class="btn btn-info mt-3" onclick="reset()">Clear</button>
-
                     </div>
                     <div class="col-md-6 mt-5" id="scores">
-                        <input type="text" class="" placeholder="Enter Student Email">
-                        <input type="text" class="" placeholder="Enter Score">
-                        <button class="btn btn-info mt-3 float-right">Add Score</button>
+                        <input type="text" id="empEmail" placeholder="Enter Student Email">
+                        <input type="text" id="empScore" placeholder="Enter Score">
+                        <button class="btn btn-info mt-3 float-right" onclick="setScoreStudents()">Add Score</button>
                         <h2>Scores of the student</h2>
                         <div class="col-md-12" id="tableScore">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col" >#</th>
-                                        <th scope="col" >Name</th>
-                                        <th scope="col" >Surname</th>
-                                        <th scope="col" >Score</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Surname</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tBody student-list">
+                                    <tr id = "tableStudentScores"></tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div id="errors" class = "col-md-6">
+                        <div class="alert alert-danger col-md-6 mt-4" id="alert">
+                            <p class="alert-error"> Please, Fill all calls !!!</p>
+                        </div>
+                        <div class="alert alert-warning col-md-6 mt-4" id="alert-number">
+                            <p class="alert-error-number"> Please, Correct fill calls !!!</p>
                         </div>
                     </div>
                     <div class="col-md-12" id="table">
@@ -70,14 +76,7 @@
                         </table>
                     </div>
                 </div>
-                <div id="errors">
-                    <div class="alert alert-danger col-md-6 mt-4" id="alert">
-                        <p class="alert-error"> Please, Fill all calls !!!</p>
-                    </div>
-                    <div class="alert alert-danger col-md-6 mt-4" id="alert-number">
-                        <p class="alert-error-number"> Please, Enter your Birthday !!!</p>
-                    </div>
-                </div>
+                
 
 
             </div>
