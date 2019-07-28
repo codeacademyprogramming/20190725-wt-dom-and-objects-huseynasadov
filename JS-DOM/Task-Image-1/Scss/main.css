@@ -3,6 +3,28 @@
   padding: 0;
 }
 
+@-webkit-keyframes icon {
+  from {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  to {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+}
+
+@keyframes icon {
+  from {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  to {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+}
+
 body {
   min-height: 100vh;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#4e4a4a), to(grey));
@@ -28,16 +50,34 @@ body .section-form .student-form button {
 
 body .section-form #scores {
   border: 2px solid #17a2b8;
+  border-radius: 5px;
   padding-top: 20px;
 }
 
 body .section-form #scores #tableScore {
   height: 250px;
   overflow-y: auto;
+  margin-bottom: 10px;
 }
 
-body .section-form #scores #tableScore th, body .section-form #scores #tableScore td {
+body .section-form #scores #tableScore table {
+  height: 100%;
+  border-collapse: separate;
+}
+
+body .section-form #scores #tableScore table th, body .section-form #scores #tableScore table td {
   color: white;
+  text-align: center;
+}
+
+body .section-form #scores #tableScore table tbody {
+  padding: 20px;
+}
+
+body .section-form #scores #tableScore table tbody tr {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 body .section-form #scores h2 {
@@ -47,6 +87,7 @@ body .section-form #scores h2 {
 }
 
 body .section-form #scores input {
+  margin-left: 8px;
   padding-left: 10px;
   width: 48%;
   border-radius: 5px;
@@ -63,20 +104,34 @@ body .section-form #table table {
 }
 
 body .section-form #table table thead th {
-  cursor: pointer;
-  -webkit-transition: 0.1s all;
-  transition: 0.1s all;
+  text-align: left;
 }
 
-body .section-form #table table thead th:hover {
-  color: #17a2b8;
-  -webkit-transform: translateY(-2px);
-          transform: translateY(-2px);
+body .section-form #table table tbody tr {
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
 }
 
-body .section-form #table table thead th:active {
-  -webkit-transform: translateY(0px);
-          transform: translateY(0px);
+body .section-form #table table tbody tr:hover {
+  background-color: white;
+  color: #4e4a4a;
+}
+
+body .section-form #table table tbody tr i {
+  -webkit-transition: .5s all;
+  transition: .5s all;
+}
+
+body .section-form #table table tbody tr i:hover {
+  color: gray;
+  -webkit-animation-name: icon;
+          animation-name: icon;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
 }
 
 body .section-form #errors {

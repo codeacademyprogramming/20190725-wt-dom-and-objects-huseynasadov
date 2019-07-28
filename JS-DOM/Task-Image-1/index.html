@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JS Object Array</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="Scss/main.css">
 </head>
@@ -40,18 +42,18 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Surname</th>
+                                        <th scope="col" class="scoreFullName">#</th>
+                                        <th scope="col" class="scoreFullName">Name</th>
+                                        <th scope="col" class="scoreFullName">Surname</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tBody student-list">
-                                    <tr id = "tableStudentScores"></tr>
+                                    <tr id="tableStudentScores"></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div id="errors" class = "col-md-6">
+                    <div id="errors" class="col-md-6">
                         <div class="alert alert-danger col-md-6 mt-4" id="alert">
                             <p class="alert-error"> Please, Fill all calls !!!</p>
                         </div>
@@ -64,11 +66,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" onclick="randomSort()">#</th>
-                                    <th scope="col" onclick="sortedList('name')">Name</th>
-                                    <th scope="col" onclick="sortedList('surname')">Surname</th>
-                                    <th scope="col" onclick="sortedList('email')">Email</th>
-                                    <th scope="col" onclick="sortedList('birthday')">Birthday</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Surname</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Birthday</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class="tBody student-list">
@@ -76,9 +79,6 @@
                         </table>
                     </div>
                 </div>
-                
-
-
             </div>
         </section>
     </main>

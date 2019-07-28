@@ -1,8 +1,13 @@
-"use strict"
+"use strict";
 
-let students = [];
-let list = "";
-let inputs = document.getElementsByClassName("student-input");
+let students = [],
+    student,
+    inputs = document.getElementsByClassName("student-input"),
+    empEmail = document.getElementById("empEmail"),
+    empScore = document.getElementById("empScore"),
+    tableStudentScores = document.getElementsByClassName("student-list")[0],
+    tableStudent = document.getElementsByClassName("student-list")[1],
+    scoreFullName = document.getElementsByClassName("scoreFullName");
 
 function Student(name, surname, email, birthday) {
     this.name = name;
@@ -27,15 +32,20 @@ function Student(name, surname, email, birthday) {
 }
 
 function reset() {
-    list = "";
     inputs[0].value = "";
     inputs[1].value = "";
     inputs[2].value = "";
     inputs[3].value = "";
+    empScore.value = "";
+    empEmail.value = "";
     document.getElementById("alert").style.visibility = "hidden";
     document.getElementById("alert-number").style.visibility = "hidden";
+    scoreFullName[0].innerText = "#" ;
+    scoreFullName[1].innerText = "Name";
+    scoreFullName[2].innerText = "Surname";
+    tableStudentScores.innerHTML = "";
 }
-let student;
+
 function getInputValues() {
 
     student = new Student(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
@@ -48,12 +58,11 @@ function getInputValues() {
             getWriteList();
             document.getElementById("alert").style.visibility = "hidden";
             return document.getElementById("alert-number").style.visibility = "hidden";
-
         } else {
             document.getElementById("alert").style.visibility = "hidden";
             return document.getElementById("alert-number").style.visibility = "visible"
         }
-    } else {
+    }else {
         document.getElementById("alert-number").style.visibility = "hidden";
         return document.getElementById("alert").style.visibility = "visible";
     }
@@ -61,59 +70,32 @@ function getInputValues() {
 
 
 
-function generateLiItems(value, index) {
-     
-    list += `<tr><th>${index + 1}</th><td>${value.name}</td><td>${value.surname}</td><td>${value.email}</td><td>${value.birthday}</td></tr>`;
-}
-
 function getWriteList() {
-    let trElem = document.createElement("tr");
-    document.getElementsByClassName("student-list")[1].appendChild(trElem); 
-    trElem.setAttribute("data-index", (students.length-1));
-    trElem.style.cursor = "pointer";
-    trElem.innerHTML = `<td></td><td>${student.name}</td><td>${student.surname}</td><td>${student.email}</td><td>${student.birthday}</td>`;
-    trElem.addEventListener("dblclick",function(){ 
-        let  studentIndex = this.getAttribute("data-index");
-          alert(students[studentIndex].getAverageScore());
-      });
-  
-      inputs[0].value = "";
-      inputs[1].value = "";
-      inputs[2].value = "";
-      inputs[3].value = "";
+    
+        let trElem = document.createElement("tr");
+        document.getElementsByClassName("student-list")[1].appendChild(trElem); 
+        trElem.setAttribute("data-index", (students.length-1));
+        trElem.style.cursor = "pointer";
+        trElem.innerHTML = `<td>${students.length}</td><td>${student.name.toUpperCase()}</td><td>${student.surname.toUpperCase()}</td><td>${student.email.toUpperCase()}</td><td>${student.birthday.toUpperCase()}</td><td><i class="far fa-trash-alt icon"></i></td>`;
+        
+        trElem.addEventListener("dblclick",function(){ 
+             let studentIndex = this.getAttribute("data-index");
+              alert(student.name + " " + student.surname + " " + "Average Score : " + students[studentIndex].getAverageScore());
+        });       
+    
+        let deletes = document.querySelectorAll('.icon');
+        deletes.forEach(btn => {
+            btn.addEventListener("click", function(){
+                let trDelete = this.parentNode.parentNode;
+                trDelete.remove();
+            })
+        });     
+        reset();      
 }
 
 
-// When Onclick Sorted
+// Score Table
 
-function sortedMetod(value) {
-    return function (a, b) {
-        if (a[value] < b[value]) { return -1; } else if (a[value] > b[value]) { return 1 } else { return 0; }
-    }
-}
-
-function sortedList(value) {
-    students.sort(sortedMetod(value));
-   
-}
-
-// Random Sorted
-
-function randomSort() {
-    students.sort(myFunct());
-    getWriteList();
-}
-function myFunct() {
-    return function () {
-        return Math.random() - 0.5;
-    }
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-let empEmail = document.getElementById("empEmail"),
-    empScore = document.getElementById("empScore"),
-    tableStudentScores = document.getElementsByClassName("student-list")[0];
 
 function setScoreStudents(){
     let index = students.findIndex((val)=>{
@@ -122,16 +104,23 @@ function setScoreStudents(){
         }
         return false;
     });
-        if(index != -1){
-        students[index].addScores(Number(empScore.value));
+    if(index != -1){
+        if(empScore.value > 0){
+            students[index].addScores(Number(empScore.value));
 
-        tableStudentScores.innerHTML = "";
-
-        for(let i = 0; i < students[index].scores.length; i++){
-            let tr = document.createElement("tr");
-            tr.innerText = students[index].scores[i];
-
-            tableStudentScores.appendChild(tr);
+            tableStudentScores.innerHTML = "";
+    
+            for(let i = 0; i < students[index].scores.length; i++){
+                let tr = document.createElement("tr");
+                tr.innerText = `${i + 1} . ${students[index].scores[i]}`;
+                tableStudentScores.appendChild(tr);
+                empScore.value = "";
+            }
+            scoreFullName[0].innerText = index +1 ;
+            scoreFullName[1].innerText = students[index].name.toUpperCase();
+            scoreFullName[2].innerText = students[index].surname.toUpperCase();
+        }else{
+            alert("Please,Enter Score");
         }
     }
 }

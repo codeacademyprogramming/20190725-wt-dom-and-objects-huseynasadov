@@ -4,6 +4,11 @@
 
 }
 
+@keyframes icon{
+    from{transform: rotate(20deg)}
+    to{transform: rotate(-20deg)}
+}
+
 body{
     min-height: 100vh;
     background-image: linear-gradient(to bottom,rgb(78, 74, 74),grey);
@@ -27,13 +32,29 @@ body{
 
         #scores{
             border:2px solid #17a2b8;
+            border-radius: 5px;
             padding-top: 20px; 
             #tableScore{
                 height: 250px;
-                overflow-y: auto;    
-                th,td{
-                    color: white;
-                }
+                overflow-y: auto;  
+                margin-bottom: 10px;
+                
+                table{
+                    height: 100%;
+                    border-collapse: separate;
+                    th,td{
+                        color: white;
+                        text-align: center;
+                    }
+                    tbody{
+                        padding: 20px;
+                        tr{
+                            color:white;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+                }  
             }         
             h2{
                 margin-top: 50px;
@@ -42,6 +63,7 @@ body{
             }
 
             input{
+                margin-left: 8px;
                 padding-left: 10px;
                 width: 48%;
                 border-radius: 5px;
@@ -58,14 +80,26 @@ body{
                 color:white;
                 thead{
                     th{
-                        cursor: pointer;
-                        transition: 0.1s all;
+                        text-align: left;
+                    }
+                }
+                tbody{
+                    tr{
+                        transition: 0.5s all;
                         &:hover{
-                            color:#17a2b8;
-                            transform: translateY(-2px);
+                            background-color: white;
+                            color:rgb(78, 74, 74);
                         }
-                        &:active{
-                            transform: translateY(0px);
+                        i{
+                            transition: .5s all;
+                            
+                            &:hover{
+                                color:gray;
+                                animation-name: icon;
+                                animation-duration: 0.5s;
+                                animation-iteration-count: infinite;
+                                animation-timing-function: linear;
+                            }
                         }
                     }
                 }
