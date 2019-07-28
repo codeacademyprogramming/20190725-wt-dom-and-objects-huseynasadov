@@ -15,7 +15,7 @@ function Student(name, surname, email, birthday) {
     this.email = email;
     this.birthday = birthday;
     this.scores = [];
-    this.addScores = function(score){
+    this.addScores = function (score) {
         this.scores.push(score);
     }
 
@@ -40,7 +40,7 @@ function reset() {
     empEmail.value = "";
     document.getElementById("alert").style.visibility = "hidden";
     document.getElementById("alert-number").style.visibility = "hidden";
-    scoreFullName[0].innerText = "#" ;
+    scoreFullName[0].innerText = "#";
     scoreFullName[1].innerText = "Name";
     scoreFullName[2].innerText = "Surname";
     tableStudentScores.innerHTML = "";
@@ -62,7 +62,7 @@ function getInputValues() {
             document.getElementById("alert").style.visibility = "hidden";
             return document.getElementById("alert-number").style.visibility = "visible"
         }
-    }else {
+    } else {
         document.getElementById("alert-number").style.visibility = "hidden";
         return document.getElementById("alert").style.visibility = "visible";
     }
@@ -71,55 +71,54 @@ function getInputValues() {
 
 
 function getWriteList() {
-    
-        let trElem = document.createElement("tr");
-        document.getElementsByClassName("student-list")[1].appendChild(trElem); 
-        trElem.setAttribute("data-index", (students.length-1));
-        trElem.style.cursor = "pointer";
-        trElem.innerHTML = `<td>${students.length}</td><td>${student.name.toUpperCase()}</td><td>${student.surname.toUpperCase()}</td><td>${student.email.toUpperCase()}</td><td>${student.birthday.toUpperCase()}</td><td><i class="far fa-trash-alt icon"></i></td>`;
-        
-        trElem.addEventListener("dblclick",function(){ 
-             let studentIndex = this.getAttribute("data-index");
-              alert(student.name + " " + student.surname + " " + "Average Score : " + students[studentIndex].getAverageScore());
-        });       
-    
-        let deletes = document.querySelectorAll('.icon');
-        deletes.forEach(btn => {
-            btn.addEventListener("click", function(){
-                let trDelete = this.parentNode.parentNode;
-                trDelete.remove();
-            })
-        });     
-        reset();      
+
+    let trElem = document.createElement("tr");
+    document.getElementsByClassName("student-list")[1].appendChild(trElem);
+    trElem.setAttribute("data-index", (students.length - 1));
+    trElem.style.cursor = "pointer";
+    trElem.innerHTML = `<td>${students.length}</td><td>${student.name.toUpperCase()}</td><td>${student.surname.toUpperCase()}</td><td>${student.email.toUpperCase()}</td><td>${student.birthday.toUpperCase()}</td><td><i class="far fa-trash-alt icon"></i></td>`;
+    trElem.addEventListener("dblclick", function () {
+        let studentIndex = this.getAttribute("data-index");
+        alert(students[studentIndex].name.toUpperCase() + " " + students[studentIndex].surname.toUpperCase() + " " + "Average Score : " + students[studentIndex].getAverageScore());
+    });
+
+    let deletes = document.querySelectorAll('.icon');
+    deletes.forEach(btn => {
+        btn.addEventListener("click", function () {
+            let trDelete = this.parentNode.parentNode;
+            trDelete.remove();
+        })
+    });
+    reset();
 }
 
 
 // Score Table
 
 
-function setScoreStudents(){
-    let index = students.findIndex((val)=>{
-        if(val.email.toLowerCase() == empEmail.value.toLowerCase()){
+function setScoreStudents() {
+    let index = students.findIndex((val) => {
+        if (val.email.toLowerCase() == empEmail.value.toLowerCase()) {
             return true;
         }
         return false;
     });
-    if(index != -1){
-        if(empScore.value > 0){
-            students[index].addScores(Number(empScore.value));
 
+    if (index != -1) {
+        if (empScore.value > 0) {
+            students[index].addScores(Number(empScore.value));
             tableStudentScores.innerHTML = "";
-    
-            for(let i = 0; i < students[index].scores.length; i++){
+
+            for (let i = 0; i < students[index].scores.length; i++) {
                 let tr = document.createElement("tr");
                 tr.innerText = `${i + 1} . ${students[index].scores[i]}`;
                 tableStudentScores.appendChild(tr);
                 empScore.value = "";
             }
-            scoreFullName[0].innerText = index +1 ;
+            scoreFullName[0].innerText = index + 1;
             scoreFullName[1].innerText = students[index].name.toUpperCase();
             scoreFullName[2].innerText = students[index].surname.toUpperCase();
-        }else{
+        } else {
             alert("Please,Enter Score");
         }
     }
