@@ -9,6 +9,8 @@ let students = [],
     tableStudent = document.getElementsByClassName("student-list")[1],
     scoreFullName = document.getElementsByClassName("scoreFullName");
 
+// Constructor
+
 function Student(name, surname, email, birthday) {
     this.name = name;
     this.surname = surname;
@@ -31,6 +33,8 @@ function Student(name, surname, email, birthday) {
     };
 }
 
+// Reset
+
 function reset() {
     inputs[0].value = "";
     inputs[1].value = "";
@@ -45,6 +49,8 @@ function reset() {
     scoreFullName[2].innerText = "Surname";
     tableStudentScores.innerHTML = "";
 }
+
+// Creat Object
 
 function getInputValues() {
 
@@ -68,7 +74,7 @@ function getInputValues() {
     }
 }
 
-
+// Add List 
 
 function getWriteList() {
 

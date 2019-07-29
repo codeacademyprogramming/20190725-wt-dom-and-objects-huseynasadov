@@ -1,5 +1,7 @@
 "use strict";
 
+// variables
+
 let linkFonts = document.createElement("link"),
     main = document.createElement("main"),
     divContainer = document.createElement("div"),
@@ -20,6 +22,8 @@ let linkFonts = document.createElement("link"),
     namePete = document.createElement("p"),
     nameMark = document.createElement("p");
 
+    // Combination
+    document.body.insertBefore(document.scripts[0].nextSibling ,document.scripts[0] );
     document.head.appendChild(linkFonts);
     linkFonts.rel = "stylesheet";
     linkFonts.href = "https://fonts.googleapis.com/css?family=Chonburi|Gravitas+One&display=swap"
@@ -38,6 +42,8 @@ let linkFonts = document.createElement("link"),
     divCol4Mark.appendChild(imgMark);
     divCol4Mark.appendChild(nameMark);
 
+    // Style 
+
     divContainer.className = "container";
     divPeople.style.padding = "20px 0";
     divPeople.style.textAlign = "center";
@@ -51,7 +57,7 @@ let linkFonts = document.createElement("link"),
     h1.style.color ="#B1B1B1";
     h1.style.fontFamily = 'Chonburi';
     h1.style.fontWeight = "300";
-        divRow.className = "row";
+    divRow.className = "row";
     divRow.style.paddingTop = "40px";
     divCol4John.className = "col-4";
     divCol4John.style.margin = "0 5%";
@@ -99,5 +105,5 @@ let linkFonts = document.createElement("link"),
     nameMark.style.fontStyle = "italic";
     nameMark.style.fontSize = "17px";
 
-
+   
 
